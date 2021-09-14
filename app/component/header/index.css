@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.box_header{
+    width: 100%;
+    height: 30px;
+}
+.user-info{
+    float: right;
+}
+
+.ant-dropdown-link{
+    line-height: 30px;
+    margin-right: 10px;
+    text-align: center;
+}
+.modify_password{
+    border: none;
+}
+.modify_password:hover{
+    font-style: normal;
+}

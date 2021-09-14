@@ -1,0 +1,8 @@
+*{
+    margin:0;
+    padding:0;
+}
+.add_question{
+    float: right;
+    margin-bottom: 10px;
+}
