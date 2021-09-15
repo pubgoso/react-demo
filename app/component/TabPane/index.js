@@ -8,18 +8,15 @@ class TabPane extends Component{
         return (
 
             <div className='box_TabPane'>
-                <h1 >
-                    Root菜单
-                </h1>
-                <Menu>
-                    <Menu.Item key={0} >
-                        信息管理
-                    </Menu.Item>
-                    <Menu.Item key={1}>
-                        Rank
-                    </Menu.Item>
-                    
-                </Menu>
+                <Selection>
+                    <h1>
+                        Hap V0.0.1
+                    </h1>
+                    <text>
+                        支持发布，审核，回答问题。有任何bug和建议直接联系我。
+                        QQ:1143335638
+                    </text>
+                </Selection>
             </div>
         )
     }
