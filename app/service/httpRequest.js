@@ -8,7 +8,7 @@ class HttpRequest {
 
     get = (url, params) => {
         const HTTP = new XMLHttpRequest();
-        let link = 'http://127.0.0.1:8000' + url + "?";
+        let link = 'http://120.27.243.23:8000' + url + "?";
         for (var item in params) {
             link += item + '=' + params[item];
         }
@@ -25,7 +25,7 @@ class HttpRequest {
 
     post = (url, params) => {
         const HTTP = new XMLHttpRequest();
-        HTTP.open('POST', 'http://127.0.0.1:8000' + url, false)
+        HTTP.open('POST', 'http://120.27.243.23:8000' + url, false)
         HTTP.setRequestHeader('Content-type', 'application/json');
         HTTP.send(JSON.stringify(params));
         return {
