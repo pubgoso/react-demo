@@ -60,6 +60,9 @@ class AuditLog extends Component {
                 dataIndex: 'status',
                 key: 'status',
                 align: 'center',
+                render:(value)=>(
+                    value == 20 ? <span>通过</span> : <span>驳回</span>
+                )
             },
 
         ];
