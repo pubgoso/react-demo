@@ -16,7 +16,6 @@ class HttpRequest {
         HTTP.open('GET', link, false)
         HTTP.setRequestHeader('Content-type', 'application/json');
         HTTP.send();
-
         if(HTTP.status !== 200 ){
             message.error(HTTP.statusText);
         }
