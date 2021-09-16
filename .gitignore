@@ -31,7 +31,10 @@
 *.out
 *.app
 
-package-lock.json
-node_modules
-dist
+/package-lock.json
+
+node_modules/
+
+app/dist/
+
 app/.DS_Store
