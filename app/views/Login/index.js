@@ -45,18 +45,12 @@ class Login extends Component {
                 }
                 case 3: {
                     history.push("/user");
+                    UserStore.fetchMentorList();
                     UserStore.getSubmissions();
                     break;
                 }
                 default: ;
             }
-            // history.push("/root");
-            // 
-            // UserStore.fetchStudentList();
-            // UserStore.fetchMentorList();
-            // UserStore.fetchQuestionList();
-            // UserStore.getAuditLog();
-            // UserStore.getPendingJudgeList();
 
         }
     }
