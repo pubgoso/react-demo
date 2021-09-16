@@ -8,6 +8,7 @@ import AllModal from '../../modals/AllModal';
 import { observer } from 'mobx-react';
 import QuestionList from '../../component/questionList';
 import AuditLog from '../../component/auditLog';
+import MentorList from '../../component/mentorList';
 
 @observer
 class Contianer extends Component {
@@ -24,15 +25,22 @@ class Contianer extends Component {
                             <RankList/>
                             
                         </TabPane>
-                        <TabPane tab='UserList' key="2">
+
+                        <TabPane tab='MentorList' key="2">
+                            <MentorList/>
+                        </TabPane>
+                        
+                        <TabPane tab='UserList' key="3">
                             <UserList/>
                         </TabPane>
 
-                        <TabPane tab='QuestionList' key="3">
+
+
+                        <TabPane tab='QuestionList' key="4">
                             <QuestionList/>
                         </TabPane>
 
-                        <TabPane tab='AuditLog' key="4">
+                        <TabPane tab='AuditLog' key="5">
                             <AuditLog/>
                         </TabPane>
                         

@@ -3,23 +3,32 @@ import styles from '../../styles/index.css';
 import CopyRight from '../../component/copyRight';
 import Header from '../../component/header';
 import Contianer from './Contianer';
+import { inject, observer} from 'mobx-react';
 
-class User extends Component{
 
-    constructor(props){
+@inject("UserStore")
+@observer
+class User extends Component {
+
+    constructor(props) {
         super(props);
     }
 
-    render(){
-        return (
-            <div>
-                <div className='Body'>
+    render() {
+        const { userInfo } = this.props.UserStore;
 
-                    <Header/>
-                    <Contianer/>
-                    <CopyRight/>
-                </div>
-            </div>            
+        return (
+            (
+                userInfo.type && userInfo.type === 3 ? <div>
+                    <div className='Body'>
+
+                        <Header />
+                        <Contianer />
+                        <CopyRight />
+                    </div>
+                </div> : <h1>请登录学生账号</h1>
+            )
+
         )
 
     }

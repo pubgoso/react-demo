@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './index.css';
-import { Dropdown, Menu,Span,Button } from 'antd';
+import { Dropdown, Menu, Span, Button } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { inject, observer } from 'mobx-react';
 
@@ -16,24 +16,17 @@ class Header extends Component {
         console.log('modify');
     }
     logout = () => {
-        console.log('logout');
+        sessionStorage.clear();
+        const { history, UserStore } = this.props;
+        UserStore.userInfo = {};
+        history.push("/login");
     }
     render() {
-        const {userInfo} = this.props.UserStore;
-        const  name  = this.props.name && this.props.name || 'pubgoso';
+        const { userInfo } = this.props.UserStore;
+        const name = this.props.name && this.props.name || 'pubgoso';
         const menu = (
             <Menu>
-                <Menu.Item key="1" disabled={true}>
-                    积分: 0
-                </Menu.Item>
-                <Menu.Item key="0">
-                    <a onClick={this.modify}>
-                        修改密码
-                    </a>
-                </Menu.Item>
-
-                <Menu.Divider />
-                <Menu.Item key="3">
+                <Menu.Item key="1">
                     <a onClick={this.logout}>
                         退出登陆
                     </a>
@@ -55,7 +48,7 @@ class Header extends Component {
                     arrow={true}
                 >
                     <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                    {userInfo.name} <DownOutlined />
+                        {userInfo.name} <DownOutlined />
                     </a>
                 </Dropdown>
             </div>

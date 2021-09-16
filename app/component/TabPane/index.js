@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import styles from './index.css';
 import { Menu } from 'antd';
+import { inject, observer } from 'mobx-react';
 
-class TabPane extends Component{
+@inject("UserStore")
+@observer
+class TabPane extends Component {
 
-    render(){
+    render() {
+        const { infoList } = this.props.UserStore;
         return (
 
             <div className='box_TabPane'>
-                <Selection>
-                    <h1>
-                        Hap V0.0.1
-                    </h1>
-                    <text>
-                        支持发布，审核，回答问题。有任何bug和建议直接联系我。
-                        QQ:1143335638
-                    </text>
-                </Selection>
+                <h1>
+                    {infoList[0] && infoList[0].info || ""}
+                </h1>
+                <p>
+                    {infoList[1] && infoList[1].info || ""}
+                </p>
+                <p>
+                    {infoList[2] && infoList[2].info || ""}
+                </p>
+                <p>
+                    {infoList[3] && infoList[3].info || ""}
+                </p>
             </div>
         )
     }

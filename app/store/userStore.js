@@ -8,6 +8,7 @@ class UserStore {
     }
 
     userInfo = {};
+    infoList = [];
     studentList = [];
     mentorList = [];
     questionList = [];
@@ -20,13 +21,24 @@ class UserStore {
     auditLogLoading = true;
     submissionListLoading = true;
     pendingListLoading = true;
+
+    getInfoList = () => {
+        const response = httpRequest.get("/hfuuAcm/getInfo");
+        if(response.status === 200 ) {
+            this.infoList = response.data.data;
+            return true;
+        }
+    }
     Login = (params) => {
         const response = httpRequest.post("/hfuuAcm/login", params);
+        console.log(params);
         if (response.status === 200) {
-            this.userInfo = response.data.data[0];
+            sessionStorage["userName"]=params.userName;
+            sessionStorage["type"]=response.data.data.type;
+
+
+            this.userInfo = response.data.data;
             return true;
-        } else {
-            message.error(response.data.msg)
         }
     }
 
@@ -40,7 +52,6 @@ class UserStore {
             this.studentList.forEach(item => {
                 item.rank = ++index;
             })
-            console.log('ss=', this.studentList);
             message.success(response.data.msg);
             this.rankLoading = false;
             return true;
@@ -53,8 +64,6 @@ class UserStore {
         if (response.status === 200) {
             this.mentorList = response.data.data;
             const da = this.mentorList.filter(item => item.id === 1);
-            console.log('da=', da[0].name);
-            console.log(this.mentorList);
             message.success(response.data.msg);
             return true;
         }
@@ -65,7 +74,6 @@ class UserStore {
         this.questionListLoading = true;
         const response = httpRequest.get("/hfuuAcm/questionList");
         this.questionListLoading = false;
-        console.log('data=', response.data)
         if (response.status === 200) {
             this.questionList = response.data.data;
             message.success(response.data.msg);
@@ -82,6 +90,20 @@ class UserStore {
         }
     }
 
+    addMentor = (Item) => {
+        const response = httpRequest.post("/hfuuAcm/addMentor", Item);
+        if (response.status === 200) {
+            message.success(response.data.msg);
+            return true;
+        }
+    }
+    addStudent = (Item) => {
+        const response = httpRequest.post("/hfuuAcm/addStudent", Item);
+        if (response.status === 200) {
+            message.success(response.data.msg);
+            return true;
+        }
+    }
     addQuestion = (Item) => {
         const response = httpRequest.post("/hfuuAcm/addQuestion", Item);
         if (response.status === 200) {
@@ -96,8 +118,6 @@ class UserStore {
         if (response.status === 200) {
             message.success(response.data.msg);
             return true;
-        }else{
-            message.error(response.data.msg);
         }
     }
 

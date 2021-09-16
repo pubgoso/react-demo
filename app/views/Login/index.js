@@ -21,18 +21,43 @@ class Login extends Component {
         // const { history } = this.props;
         // history.push('/user')
     }
-    
+
     HandleOk = (Item) => {
         // 验证 登陆 信息 是否正确 
-        const {UserStore} = this.props;
-        if(UserStore.Login(Item)){
-            const {history} =this.props;
-            history.push("/root");
+        const { UserStore } = this.props;
+        if (UserStore.Login(Item)) {
+            const { history } = this.props;
+            const { userInfo } = UserStore;
             UserStore.fetchStudentList();
-            UserStore.fetchMentorList();
-            UserStore.fetchQuestionList();
-            UserStore.getAuditLog();
-            UserStore.getPendingJudgeList();
+            UserStore.getInfoList();
+            switch (userInfo.type) {
+                case 1: {
+                    history.push("/root");
+                    UserStore.fetchQuestionList();
+                    UserStore.getAuditLog();
+                    UserStore.fetchMentorList();
+                    break;
+                }
+                case 2: {
+                    history.push("/mentor");
+                    UserStore.fetchQuestionList();
+                    break;
+                }
+                case 3: {
+                    history.push("/user");
+                    UserStore.getSubmissions();
+                    break;
+                }
+                default: ;
+            }
+            // history.push("/root");
+            // 
+            // UserStore.fetchStudentList();
+            // UserStore.fetchMentorList();
+            // UserStore.fetchQuestionList();
+            // UserStore.getAuditLog();
+            // UserStore.getPendingJudgeList();
+
         }
     }
     HandleCancel = () => {
@@ -72,13 +97,13 @@ class Login extends Component {
                         <Input.Password />
                     </Form.Item>
 
-                    <Form.Item  >
+                    {/* <Form.Item  >
                         <Form.Item name="remember" valuePropName="checked" noStyle>
                             <Checkbox>记住我</Checkbox>
                         </Form.Item>
 
 
-                    </Form.Item>
+                    </Form.Item> */}
 
                     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                         <Button type="primary" htmlType="submit"  >

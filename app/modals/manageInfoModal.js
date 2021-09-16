@@ -75,7 +75,18 @@ class ManageInfo extends Component {
                             {optionList}
                         </Select>
                     </Form.Item>
-
+                    <Form.Item
+                        label='密码'
+                        name='password'
+                        required={[
+                            {
+                                required:true,
+                                message:'请输入密码'
+                            }
+                        ]}
+                    >
+                        <Input/>
+                    </Form.Item>
                     <Button
                         type="primary"
                         htmlType="submit"

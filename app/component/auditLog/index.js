@@ -28,7 +28,7 @@ class AuditLog extends Component {
                 ket: 'id',
                 align: 'center',
                 render: (value) => (
-                    <span>{studentList.filter(item => item.id === value)[0].name}</span>
+                    <span>{studentList.length > 0 && studentList.filter(item => item.id === value)[0].name || '-'}</span>
                 )
             },
             {
@@ -39,7 +39,7 @@ class AuditLog extends Component {
                 ellipsis: true,
                 align: 'center',
                 render: (value) => (
-                    <span>{mentorList.filter(item => item.id === value)[0].name}</span>
+                    <span>{mentorList.length > 0 && mentorList.filter(item => item.id === value)[0].name || '-'}</span>
                 )
             },
             {

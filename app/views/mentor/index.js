@@ -3,23 +3,31 @@ import styles from '../../styles/index.css';
 import CopyRight from '../../component/copyRight';
 import Header from '../../component/header';
 import Contianer from './Contianer';
+import { inject, observer } from 'mobx-react';
 
-class Mentor extends Component{
 
-    constructor(props){
+@inject('UserStore')
+@observer
+class Mentor extends Component {
+
+    constructor(props) {
         super(props);
     }
 
-    render(){
+    render() {
+        const { userInfo } = this.props.UserStore;
         return (
-            <div>
-                <div className='Body'>
+            (
+                userInfo.type && userInfo.type === 2 ? <div>
+                    <div className='Body'>
 
-                    <Header/>
-                    <Contianer/>
-                    {/* <CopyRight/> */}
-                </div>
-            </div>            
+                        <Header />
+                        <Contianer />
+                        {/* <CopyRight/> */}
+                    </div>
+                </div> : <h1>请登录mentor权限账号</h1>
+            )
+
         )
 
     }

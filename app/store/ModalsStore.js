@@ -15,12 +15,17 @@ class ModalsStore {
         "modifyQuestion":{
             open: false,
             info: {}
-        }
+        },
+        "addMentor":{
+            open: false,
+        },
+        "addStudent":{
+            open: false,
+        }     
     }
 
 
     open = (Name) => {
-        console.log('Name=',Name);
         this.modals[Name].open = true;
     }
     close = (Name) => {

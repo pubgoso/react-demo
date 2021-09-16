@@ -9,24 +9,26 @@ import Mentor from './views/mentor';
 import { Provider } from 'mobx-react'
 import store from './store'
 import UserStore from './store/userStore';
+import App from './views/App';
 
 ReactDOM.render(
   <Provider {...store}>
+    {/* <App/> */}
     <HashRouter history={createBrowserHistory}>
-      {/* <Switch> */}
-      <Route path="/login" component={Login} />
-      {
-        UserStore.IsRoot() ? <Route path="/root" component={Root} /> : ""
-      }
-      {
-        UserStore.IsMentor() ? <Route path="/mentor" component={Mentor} /> : ""
-      }
-      {
-        UserStore.IsUser() ? <Route path="/user" component={User} /> : ""
-      }
-      
-      <Redirect to='/login' />
-      {/* </Switch> */}
+      <Switch>
+        <Route path="/login" component={Login} />
+        {
+          <Route path="/root" component={Root} />
+        }
+        {
+          <Route path="/mentor" component={Mentor} />
+        }
+        {
+          <Route path="/user" component={User} />
+        }
+
+        <Redirect to='/login' />
+      </Switch>
     </HashRouter>
   </Provider>,
   document.getElementById('root'),
