@@ -35,6 +35,6 @@
 
 node_modules/
 
-app/dist/
+dist/
 
-app/.DS_Store
+.DS_Store
