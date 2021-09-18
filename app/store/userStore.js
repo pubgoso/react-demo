@@ -6,8 +6,8 @@ class UserStore {
     constructor() {
         makeAutoObservable(this);
     }
-
-    userInfo = {};
+    
+    userInfo = localStorage;
     infoList = [];
     studentList = [];
     mentorList = [];
@@ -33,9 +33,15 @@ class UserStore {
         const response = httpRequest.post("/hfuuAcm/login", params);
         console.log(params);
         if (response.status === 200) {
-            sessionStorage["userName"]=params.userName;
+            sessionStorage["userName"]=params.username;
             sessionStorage["type"]=response.data.data.type;
-
+            
+            if(params.remember === true){
+                for(let item in response.data.data){
+                    localStorage.setItem(item,response.data.data[item]);
+                    sessionStorage[item]=response.data.data;
+                }
+            }
 
             this.userInfo = response.data.data;
             return true;

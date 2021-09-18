@@ -16,7 +16,8 @@ class Header extends Component {
         console.log('modify');
     }
     logout = () => {
-        sessionStorage.clear();
+        // sessionStorage.clear();
+        localStorage.clear();
         const { history, UserStore } = this.props;
         UserStore.userInfo = {};
         history.push("/login");

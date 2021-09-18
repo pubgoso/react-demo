@@ -12,12 +12,22 @@ class Root extends Component {
     constructor (props){
         super(props);
     }
+    componentWillMount(){
+        const {UserStore} =this.props;
+        if(UserStore.userInfo.type == 1){
+            UserStore.fetchStudentList();
+            UserStore.getInfoList();
+            UserStore.fetchQuestionList();
+            UserStore.getAuditLog();
+            UserStore.fetchMentorList();            
+        }
+
+    }
     render() {
         const { userInfo } = this.props.UserStore;
-
         return (
             (
-                userInfo.type && userInfo.type === 1 ?
+                userInfo.type && userInfo.type == 1 ?
                     <div className='Body'>
                         <Header history={this.props.history}/>
                         <Contianer />
