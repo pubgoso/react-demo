@@ -17,39 +17,34 @@ class Contianer extends Component {
         const { TabPane } = Tabs;
         return (
             <div>
-                <Tabpane />
+                <div className='left'>
+                    <RankList />
+
+                </div>
                 <div className='w'>
-
                     <Tabs>
-                        <TabPane tab='RankList' key="1">
-                            <RankList/>
-                            
-                        </TabPane>
-
                         <TabPane tab='MentorList' key="2">
-                            <MentorList/>
+                            <MentorList />
                         </TabPane>
-                        
+
                         <TabPane tab='UserList' key="3">
-                            <UserList/>
+                            <UserList />
                         </TabPane>
-
-
 
                         <TabPane tab='QuestionList' key="4">
-                            <QuestionList/>
+                            <QuestionList />
                         </TabPane>
 
                         <TabPane tab='AuditLog' key="5">
-                            <AuditLog/>
+                            <AuditLog />
                         </TabPane>
-                        
+
                     </Tabs>
                     <div>
 
                     </div>
                 </div>
-                <AllModal/>
+                <AllModal />
             </div>
         )
     }

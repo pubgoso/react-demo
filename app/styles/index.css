@@ -4,9 +4,11 @@
 }
 
 .w{
-    
-    width: 1000px;
-    float: right;
-    margin-right: 200px;
+    margin-right: 50px;
 }
 
+.left{
+    width: 30%;
+    float: left;
+    margin-right: 100px;
+}

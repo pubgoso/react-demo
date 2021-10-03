@@ -19,6 +19,7 @@ class Mentor extends Component {
     componentWillMount(){
         const{UserStore}=this.props;
         if(UserStore.userInfo.type == 2){
+            UserStore.getPendingJudgeList();
             UserStore.fetchStudentList();
             UserStore.getInfoList();
             UserStore.fetchQuestionList();            

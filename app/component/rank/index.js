@@ -26,66 +26,66 @@ class RankList extends Component {
                 align: 'center',
                 render: (value) => (
                     value <= 3 ?
-                    <svg class="icon" aria-hidden="true">
-                        <use href={value === 1 ? '#icon-guanjun' : (value === 2 ? '#icon-yajun' : '#icon-jijun')}></use>
-                    </svg>
-                //     
-                    : <span>{value}</span>
+                        <svg class="icon" aria-hidden="true">
+                            <use href={value === 1 ? '#icon-guanjun' : (value === 2 ? '#icon-yajun' : '#icon-jijun')}></use>
+                        </svg>
+                        //     
+                        : <span>{value}</span>
                 )
-    },
+            },
             {
-    title: '姓名',
-        dataIndex: 'name',
-            key: 'name',
+                title: '姓名',
+                dataIndex: 'name',
+                key: 'name',
                 align: 'center',
             },
-{
-    title: '班级',
-        dataIndex: 'class_field',
-            key: 'class_field',
-                align: 'center',
-            },
-{
-    title: 'mentor',
-        dataIndex: 'mid_id',
-            key: 'mid_id',
-                align: 'center',
-                    render: (value) => (
-                        <span>
-                            {(mentorList.filter(item => item.id === value)).length > 0 && ((mentorList.filter(item => item.id === value))[0]).name || '-'}
-                        </span>
-                    ),
+            // {
+            //     title: '班级',
+            //     dataIndex: 'class_field',
+            //     key: 'class_field',
+            //     align: 'center',
+            // },
+            // {
+            //     title: 'mentor',
+            //     dataIndex: 'mid_id',
+            //     key: 'mid_id',
+            //     align: 'center',
+            //     render: (value) => (
+            //         <span>
+            //             {(mentorList.filter(item => item.id === value)).length > 0 && ((mentorList.filter(item => item.id === value))[0]).name || '-'}
+            //         </span>
+            //     ),
 
-            },
-{
-    title: '积分',
-        key: 'score',
-            dataIndex: 'score',
+            // },
+            {
+                title: '积分',
+                key: 'score',
+                dataIndex: 'score',
                 align: 'center',
             },
         ];
 
-// 从数据库 拿 数据 
-const { studentList, rankLoading } = this.props.UserStore;
+        // 从数据库 拿 数据 
+        const { studentList, rankLoading } = this.props.UserStore;
 
-return (
+        return (
 
-    <div>
-        <Button onClick={this.reload}>
-            刷新
-        </Button>
-        <Table
-            loading={rankLoading}
-            columns={columns}
-            dataSource={studentList}
-            pagination={{
-                position: ["topRight"]
-            }}
-        >
+            <div>
+                {/* <Button onClick={this.reload}>
+                    刷新
+                </Button> */}
+                <Table
+                    loading={rankLoading}
+                    columns={columns}
+                    dataSource={studentList}
+                    pagination={{
+                        position: ["topRight"]
+                    }}
+                >
 
-        </Table>
-    </div>
-)
+                </Table>
+            </div>
+        )
     }
 }
 
